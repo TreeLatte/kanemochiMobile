@@ -16,6 +16,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -31,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     public void test(View view){
         switch (view.getId()){
             case R.id.loginButton:
-                AnotherThread thread = new AnotherThread("http://10.10.17.67:8888/kanemochi/login");
+                AnotherThread thread = new AnotherThread("http://10.10.17.67:8888/kanemochi/android/login");
                 thread.start();
                 break;
             case R.id.signupButton:
@@ -90,7 +91,8 @@ public class LoginActivity extends AppCompatActivity {
                     httpURLConnection.setRequestMethod("POST");
                     OutputStream outputStream = httpURLConnection.getOutputStream();
                     String temp = id+","+pwd;
-                    outputStream.write(temp.getBytes("utf-8"));
+//                    temp = URLEncoder.encode(temp,"utf-8");
+                    outputStream.write((id+","+pwd).getBytes("utf-8"));
                     Log.i("temp: ",temp);
                     Log.i("아이디: ",id);
                     Log.i("비번: ",pwd);
