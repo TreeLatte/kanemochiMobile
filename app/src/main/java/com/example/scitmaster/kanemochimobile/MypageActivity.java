@@ -12,8 +12,8 @@ public class MypageActivity extends AppCompatActivity{
         setContentView(R.layout.activity_mypage);
     }
 
-    public void write(View view){
-        Intent intent = new Intent(MypageActivity.this, WriteActivity.class);
+    public void calendar(View view){
+        Intent intent = new Intent(MypageActivity.this, CalendarActivity.class);
         startActivityForResult(intent,100);
     }
 
@@ -21,5 +21,4 @@ public class MypageActivity extends AppCompatActivity{
         Intent intent = new Intent(MypageActivity.this, ChartActivity.class);
         startActivityForResult(intent,200);
     }
-
 }

@@ -87,7 +87,7 @@
             android:background="@drawable/money_pack"
             android:layout_gravity="left"
             android:layout_marginRight="35dp"
-            android:onClick="write"/>
+            android:onClick="calendar"/>
 
         <Button
             android:id="@+id/btn_chart"
