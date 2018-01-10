@@ -7,7 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,7 +35,16 @@ public class WriteActivity extends AppCompatActivity {
     private String day;
     private TextView dayView;
     private Spinner spinner;
+    private String category;
+    private EditText editText;
+    private String kane;
+    private EditText editText2;
+    private String tag;
+    private String payment;
     private String[] items = {"burger","ramen","sushi","cafe","dessert","beer","cvs","movie","clothes","hair","hospital","book","bus","bank"};
+    private Button confirm;
+    private Button cancel;
+    private RadioGroup radioGroup;
 
 
     @Override
@@ -44,51 +58,60 @@ public class WriteActivity extends AppCompatActivity {
         id = intent.getExtras().getString("id");
         day = intent.getExtras().getString("day");
         dayView.setText(day);
+        editText = (EditText) findViewById(R.id.Kane);
+        editText2 = (EditText) findViewById(R.id.Tag);
         //스피너에 카테고리 집어넣음
         spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
         spinner.setAdapter(adapter);
+
+        //spineer선택시 이벤트
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                category = items[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                category = null;
+            }
+        });
+
+        //리디오 그룹 설정
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        radioGroup.setOnCheckedChangeListener(radioGroupButtonChangeListener);
+
         // 스레드 시작
         AnotherThread thread = new AnotherThread("http://10.10.17.26:8089/kanemochi/android/getCategory");
         thread.start();
 
 
+        //확인버튼을 눌렀을 경우
+        confirm = (Button) findViewById(R.id.Confirm);
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                kane = editText.getText().toString();
+                tag = editText2.getText().toString();
+            }
+        });
+
     }
 
+    RadioGroup.OnCheckedChangeListener radioGroupButtonChangeListener = new RadioGroup.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            if (checkedId == R.id.cash){
+                payment = "cash";
+            }
 
-
-    public void test(View view){
-        switch (view.getId()){
-            case R.id.Confirm:
-                if(jsonText == null) return;
-                JSONArray jsonArray = null;
-                JSONObject jsonObject = null;
-
-                try {
-                    jsonArray = new JSONArray(jsonText);
-                    StringBuilder sb2 = new StringBuilder();
-
-                    for(int i=0; i<jsonArray.length() ;i++){
-                        jsonObject = jsonArray.getJSONObject(i);
-                        sb2.append("번호: ");
-                        sb2.append(jsonObject.getString("num"));
-                        sb2.append("이름: ");
-                        sb2.append(jsonObject.getString("name"));
-                        sb2.append("\n");
-                    }
-
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                break;
-
-            case R.id.Cancel:
-                break;
+            else if (checkedId == R.id.card){
+                payment = "card";
+            }
         }
-    }
+    };
 
     private class AnotherThread extends Thread{
         String addr;

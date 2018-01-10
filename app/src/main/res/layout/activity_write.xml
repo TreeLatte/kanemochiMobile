@@ -73,6 +73,7 @@
             android:textSize="50px" />
 
         <EditText
+            android:id="@+id/Tag"
             android:layout_width="190dp"
             android:layout_height="45dp"
             android:layout_gravity="center"
@@ -99,6 +100,7 @@
             android:textSize="50px" />
 
         <EditText
+            android:id="@+id/Kane"
             android:layout_width="190dp"
             android:layout_height="45dp"
             android:layout_gravity="center"
@@ -125,6 +127,7 @@
             android:textSize="50px" />
 
         <RadioGroup
+            android:id="@+id/radioGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -134,11 +137,13 @@
             >
 
             <RadioButton
+                android:id="@+id/cash"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cash"
                 android:textSize="24dp"/>
             <RadioButton
+                android:id="@+id/card"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
