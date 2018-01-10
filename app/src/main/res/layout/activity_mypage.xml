@@ -18,27 +18,26 @@
         android:layout_margin="20dp">
 
         <ImageView
-            android:id="@+id/avatar"
+            android:id="@+id/userAvatar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/yhk"/>
+            />
 
         <TextView
-            android:id="@+id/userName"
+            android:id="@+id/userId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="김영현 님"
             android:textSize="35sp"
-            android:layout_toRightOf="@+id/avatar"/>
+            android:layout_toRightOf="@+id/userAvatar"/>
 
         <TextView
+            android:id="@+id/userLevel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/avatar"
-            android:layout_toRightOf="@+id/avatar"
+            android:layout_toEndOf="@+id/userAvatar"
+            android:layout_toRightOf="@+id/userAvatar"
             android:gravity="bottom"
-            android:text="level. 7"
             android:textSize="30sp" />
 
     </RelativeLayout>
@@ -48,18 +47,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!--       <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
-                   android:id="@+id/progress_1"
-                   android:layout_height="wrap_content"
-                   android:layout_width="match_parent"
-                   app:rcBackgroundPadding="5dp" />-->
-
         <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+            android:id="@+id/level_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:dsb_min="0"
             app:dsb_max="10"
-            app:dsb_value ="7"
+            app:dsb_value ="1"
             app:dsb_progressColor="#DE7E73"
             app:dsb_indicatorColor="#DE7E73"
             app:dsb_rippleColor="#DE7E73"
@@ -68,8 +62,6 @@
             app:dsb_scrubberHeight="15dp"
             app:dsb_thumbSize="15dp"
             />
-
-
     </LinearLayout>
 
     <LinearLayout
@@ -77,8 +69,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         >
-
-
 
         <Button
             android:id="@+id/btn_write"
@@ -98,11 +88,10 @@
             android:onClick="chart"/>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/testTextView"
+    <Button
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-    </TextView>
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="로그아웃"/>
 
 </LinearLayout>
