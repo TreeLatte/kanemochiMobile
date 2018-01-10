@@ -37,6 +37,12 @@ public class CalendarActivity extends AppCompatActivity {
     private int i=0;
     private String id;
     private String dayString;
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,9 +51,9 @@ public class CalendarActivity extends AppCompatActivity {
         calendar = (MaterialCalendarView) findViewById(R.id.calendarView);
         scrollView = (ScrollView)findViewById(R.id.data_scroll_view);
         linearLayout = (LinearLayout)findViewById(R.id.scroll_in_layout);
-//        Intent intent = getIntent();
-//        id = intent.getExtras().getString("id");
-        id="jjh8623";
+        Intent intent = getIntent();
+        id = intent.getExtras().getString("id");
+
         calendar.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
@@ -66,7 +72,7 @@ public class CalendarActivity extends AppCompatActivity {
                 else day2 = String.valueOf(day);
 
                 dayString = year+"-"+month2+"-"+day2;
-                serverThread = new ServerThread("http://10.10.17.67:8888/kanemochi/android/getCalendar",id,dayString);
+                serverThread = new ServerThread("http://10.10.17.26:8089/kanemochi/android/getCalendar",id,dayString);
                 serverThread.start();
             }
         });

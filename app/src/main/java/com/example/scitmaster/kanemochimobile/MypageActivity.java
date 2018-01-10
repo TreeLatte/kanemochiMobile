@@ -7,6 +7,7 @@ import android.view.View;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 
@@ -20,7 +21,24 @@ public class MypageActivity extends AppCompatActivity{
     private String id;
     private String img;
     private String level;
+    private final long FINISH_INTERVAL_TIME = 2000;
+    private long   backPressedTime = 0;
 
+    @Override
+    public void onBackPressed() {
+        long tempTime = System.currentTimeMillis();
+        long intervalTime = tempTime - backPressedTime;
+
+        if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime)
+        {
+            super.onBackPressed();
+        }
+        else
+        {
+            backPressedTime = tempTime;
+            Toast.makeText(getApplicationContext(), "한번 더 뒤로가기 누르면 꺼집니다.", Toast.LENGTH_SHORT).show();
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +72,6 @@ public class MypageActivity extends AppCompatActivity{
     public void calendar(View view){
         Intent intent = new Intent(MypageActivity.this, CalendarActivity.class);
         intent.putExtra("id", id);
-        finish();
         startActivity(intent);
     }
 
