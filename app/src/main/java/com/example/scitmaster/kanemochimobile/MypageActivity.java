@@ -21,4 +21,5 @@ public class MypageActivity extends AppCompatActivity{
         Intent intent = new Intent(MypageActivity.this, ChartActivity.class);
         startActivityForResult(intent,200);
     }
+
 }
