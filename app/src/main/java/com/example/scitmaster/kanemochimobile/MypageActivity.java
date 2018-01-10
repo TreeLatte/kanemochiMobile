@@ -39,7 +39,12 @@ public class MypageActivity extends AppCompatActivity{
         userId.setText(id + " 님");
         userLevel.setText("Level. " + level);
 
+        if(img.equals("catGirl")) userAvatar.setImageResource(R.drawable.cat_girl);
+        if(img.equals("chineseGirl")) userAvatar.setImageResource(R.drawable.chinese_girl);
+        if(img.equals("englishBoy")) userAvatar.setImageResource(R.drawable.english_boy);
+        if(img.equals("pinkGirl")) userAvatar.setImageResource(R.drawable.pink_girl);
         if(img.equals("coolBoy")) userAvatar.setImageResource(R.drawable.cool_boy);
+        if(img.equals("Usoku")) userAvatar.setImageResource(R.drawable.usoku);
 
         Log.i("id2", id);
         Log.i("img2", img);
@@ -58,4 +63,9 @@ public class MypageActivity extends AppCompatActivity{
         startActivityForResult(intent,200);
     }
 
+    public void logout(View view){
+        finish();
+        Intent intent = new Intent(MypageActivity.this, LoginActivity.class);
+        startActivity(intent);
+    }
 }
