@@ -1,5 +1,6 @@
 package com.example.scitmaster.kanemochimobile;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
@@ -35,7 +36,7 @@ public class CalendarActivity extends AppCompatActivity {
     private ServerThread serverThread;
     private int i=0;
     private String id;
-
+    private String dayString;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,13 +65,20 @@ public class CalendarActivity extends AppCompatActivity {
                 if(day<10) day2 = "0"+day;
                 else day2 = String.valueOf(day);
 
-                String dayString = year+"-"+month2+"-"+day2;
+                dayString = year+"-"+month2+"-"+day2;
                 serverThread = new ServerThread("http://10.10.17.67:8888/kanemochi/android/getCalendar",id,dayString);
                 serverThread.start();
             }
         });
 
     }
+//    private void openWrite(String id, String dayString ){
+//        Intent intent = new Intent(CalendarActivity.this,WriteActivity.class);
+//        intent.putExtra("id",id);
+//        intent.putExtra("day",dayString)
+//        startActivity(intent);
+//    }
+
     private class ServerThread extends Thread{
         String addr;
         String id;
