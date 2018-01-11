@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
     public void test(View view){
         switch (view.getId()){
             case R.id.loginButton:
-                AnotherThread thread = new AnotherThread("http://10.10.17.67:8888/kanemochi/android/login");
+                AnotherThread thread = new AnotherThread("http://10.10.17.27:8089/kanemochi/android/login");
                 thread.start();
                 break;
             case R.id.signupButton:
