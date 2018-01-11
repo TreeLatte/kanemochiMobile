@@ -45,7 +45,7 @@ public class WriteActivity extends AppCompatActivity {
     private Button confirm;
     private Button cancel;
     private RadioGroup radioGroup;
-    private int result;
+    private String result;
 
 
     @Override
@@ -95,7 +95,7 @@ public class WriteActivity extends AppCompatActivity {
 
                 if(day != "" && category != "" && kane.length() > 0  && tag.length() > 0 && payment  != null ){
                     // 스레드 시작
-                    AnotherThread thread = new AnotherThread("http://10.10.17.26:8089/kanemochi/android/insertHouse");
+                    AnotherThread thread = new AnotherThread("http://10.10.17.67:8888/kanemochi/android/insertHouse");
                     thread.start();
                 } else {
                     Toast.makeText(getApplicationContext(), "입력값을 모두 입력하시오",Toast.LENGTH_LONG).show();
@@ -108,7 +108,7 @@ public class WriteActivity extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                finish();
             }
         });
 
@@ -197,7 +197,15 @@ public class WriteActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            result =  (int)msg.obj;
+            result =  (String)msg.obj;
+            Log.i("result",result);
+
+            if (result.equals("1")){
+                finish();
+            } else if (result.equals("0")) {
+                Toast.makeText(getApplicationContext(), "가계부가 입력되지 않았습니다. 내용을 확인해 주세요" , Toast.LENGTH_LONG).show();
+            }
+
         }
     };
 }
