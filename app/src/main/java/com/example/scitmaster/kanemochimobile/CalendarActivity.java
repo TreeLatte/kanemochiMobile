@@ -49,11 +49,20 @@ public class CalendarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calendar);
 
         calendar = (MaterialCalendarView) findViewById(R.id.calendarView);
+        LinearLayout inputLayout = (LinearLayout)findViewById(R.id.inputLayout);
         scrollView = (ScrollView)findViewById(R.id.data_scroll_view);
         linearLayout = (LinearLayout)findViewById(R.id.scroll_in_layout);
         Intent intent = getIntent();
         id = intent.getExtras().getString("id");
-
+        inputLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CalendarActivity.this,WriteActivity.class);
+                intent.putExtra("id",id);
+                intent.putExtra("day",dayString);
+                startActivity(intent);
+            }
+        });
         calendar.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
@@ -81,7 +90,7 @@ public class CalendarActivity extends AppCompatActivity {
 //    private void openWrite(String id, String dayString ){
 //        Intent intent = new Intent(CalendarActivity.this,WriteActivity.class);
 //        intent.putExtra("id",id);
-//        intent.putExtra("day",dayString)
+//        intent.putExtra("day",dayString);
 //        startActivity(intent);
 //    }
 
