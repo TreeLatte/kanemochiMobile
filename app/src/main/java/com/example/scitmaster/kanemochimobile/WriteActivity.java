@@ -45,6 +45,7 @@ public class WriteActivity extends AppCompatActivity {
     private Button confirm;
     private Button cancel;
     private RadioGroup radioGroup;
+    private int result;
 
 
     @Override
@@ -97,7 +98,7 @@ public class WriteActivity extends AppCompatActivity {
                     AnotherThread thread = new AnotherThread("http://10.10.17.26:8089/kanemochi/android/insertHouse");
                     thread.start();
                 } else {
-                    Toast.makeText(getApplicationContext(), "모든 입력값을 입력하시오",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "입력값을 모두 입력하시오",Toast.LENGTH_LONG).show();
                 };
 
             }
@@ -196,7 +197,7 @@ public class WriteActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            jsonText =  (String)msg.obj;
+            result =  (int)msg.obj;
         }
     };
 }
