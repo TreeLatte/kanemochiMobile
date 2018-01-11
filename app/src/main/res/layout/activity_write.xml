@@ -51,6 +51,7 @@
             android:layout_height="35dp"
             android:layout_gravity="center"
             android:layout_marginLeft="35dp"
+            android:textAlignment="center"
             >
         </Spinner>
 

@@ -75,18 +75,13 @@ public class WriteActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                category = null;
+                category = "";
             }
         });
 
         //리디오 그룹 설정
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         radioGroup.setOnCheckedChangeListener(radioGroupButtonChangeListener);
-
-        // 스레드 시작
-        AnotherThread thread = new AnotherThread("http://10.10.17.26:8089/kanemochi/android/getCategory");
-        thread.start();
-
 
         //확인버튼을 눌렀을 경우
         confirm = (Button) findViewById(R.id.Confirm);
@@ -95,6 +90,23 @@ public class WriteActivity extends AppCompatActivity {
             public void onClick(View v) {
                 kane = editText.getText().toString();
                 tag = editText2.getText().toString();
+
+                if(day != "" && category != "" && kane != "" && tag != "" && payment  != "" ){
+                    // 스레드 시작
+                    AnotherThread thread = new AnotherThread("http://10.10.17.26:8089/kanemochi/android/insertHouse");
+                    thread.start();
+                } else {
+
+                };
+
+            }
+        });
+
+        cancel = (Button) findViewById(R.id.Cancel);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 
@@ -153,7 +165,7 @@ public class WriteActivity extends AppCompatActivity {
 
                     // 서버에 메세지 보내기
                     OutputStream outputStream = httpURLConnection.getOutputStream(); // 서버에 보낼 문자열
-                    outputStream.write("안드로이드 메세지".getBytes("utf-8")); // 보내는 방식이 조금 특이
+                    outputStream.write((id+","+day+","+tag+","+kane+","+payment).getBytes("utf-8")); // 보내는 방식이 조금 특이
                     outputStream.close(); // 자원 봔환; 메모리 반환
 
                     // 서버에 응답했을 때 로직
