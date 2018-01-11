@@ -62,7 +62,7 @@ public class MypageActivity extends AppCompatActivity{
         if(img.equals("englishBoy")) userAvatar.setImageResource(R.drawable.english_boy);
         if(img.equals("pinkGirl")) userAvatar.setImageResource(R.drawable.pink_girl);
         if(img.equals("coolBoy")) userAvatar.setImageResource(R.drawable.cool_boy);
-        if(img.equals("Usoku")) userAvatar.setImageResource(R.drawable.usoku);
+        if(img.equals("usoku")) userAvatar.setImageResource(R.drawable.usoku);
 
         Log.i("id2", id);
         Log.i("img2", img);

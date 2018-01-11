@@ -93,9 +93,9 @@ public class WriteActivity extends AppCompatActivity {
                 tag = editText2.getText().toString();
                 Log.i("",kane);
 
-                if(day != "" && category != "" && kane.length() > 0  && tag.length() > 0 && payment  != null ){
+                if(!day.equals("") && !category.equals("") && kane.length() > 0  && tag.length() > 0 && payment  != null ){
                     // 스레드 시작
-                    AnotherThread thread = new AnotherThread("http://10.10.17.27:8089/kanemochi/android/insertHouse");
+                    AnotherThread thread = new AnotherThread("http://10.10.17.26:8089/kanemochi/android/insertHouse");
                     thread.start();
                 } else {
                     Toast.makeText(getApplicationContext(), "입력값을 모두 입력하시오",Toast.LENGTH_LONG).show();

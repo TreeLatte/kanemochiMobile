@@ -49,6 +49,7 @@
         android:layout_toEndOf="@+id/loginButton"
         android:layout_toRightOf="@+id/loginButton"
         android:text="Sign up"
+        android:onClick="signUp"
         android:textAllCaps="false" />
 
     <CheckBox

@@ -81,7 +81,7 @@ public class CalendarActivity extends AppCompatActivity {
                 else day2 = String.valueOf(day);
 
                 dayString = year+"-"+month2+"-"+day2;
-                serverThread = new ServerThread("http://10.10.17.27:8089/kanemochi/android/getCalendar",id,dayString);
+                serverThread = new ServerThread("http://10.10.17.26:8089/kanemochi/android/getCalendar",id,dayString);
                 serverThread.start();
             }
         });
