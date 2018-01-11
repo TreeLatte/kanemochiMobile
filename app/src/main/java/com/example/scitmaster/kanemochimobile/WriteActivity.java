@@ -90,13 +90,14 @@ public class WriteActivity extends AppCompatActivity {
             public void onClick(View v) {
                 kane = editText.getText().toString();
                 tag = editText2.getText().toString();
+                Log.i("",kane);
 
-                if(day != "" && category != "" && kane != "" && tag != "" && payment  != "" ){
+                if(day != "" && category != "" && kane.length() > 0  && tag.length() > 0 && payment  != null ){
                     // 스레드 시작
                     AnotherThread thread = new AnotherThread("http://10.10.17.26:8089/kanemochi/android/insertHouse");
                     thread.start();
                 } else {
-
+                    Toast.makeText(getApplicationContext(), "모든 입력값을 입력하시오",Toast.LENGTH_LONG).show();
                 };
 
             }
@@ -165,7 +166,7 @@ public class WriteActivity extends AppCompatActivity {
 
                     // 서버에 메세지 보내기
                     OutputStream outputStream = httpURLConnection.getOutputStream(); // 서버에 보낼 문자열
-                    outputStream.write((id+","+day+","+tag+","+kane+","+payment).getBytes("utf-8")); // 보내는 방식이 조금 특이
+                    outputStream.write((id+","+day+","+category+","+tag+","+kane+","+payment).getBytes("utf-8")); // 보내는 방식이 조금 특이
                     outputStream.close(); // 자원 봔환; 메모리 반환
 
                     // 서버에 응답했을 때 로직
