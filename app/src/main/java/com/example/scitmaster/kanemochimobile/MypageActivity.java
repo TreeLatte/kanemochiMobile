@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 
 public class MypageActivity extends AppCompatActivity{
