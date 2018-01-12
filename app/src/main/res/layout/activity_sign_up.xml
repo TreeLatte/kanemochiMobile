@@ -160,7 +160,7 @@
             android:paddingTop="15dp"
             android:paddingLeft="10dp"
             android:paddingBottom="15dp"
-            android:text="Category"
+            android:text="Character"
             android:textStyle="bold"
             android:textSize="50px" />
 
