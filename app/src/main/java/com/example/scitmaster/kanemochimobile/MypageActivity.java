@@ -77,7 +77,7 @@ public class MypageActivity extends AppCompatActivity{
 
     public void chart(View view){
         Intent intent = new Intent(MypageActivity.this, ChartActivity.class);
-        startActivityForResult(intent,200);
+        startActivity(intent);
     }
 
     public void logout(View view){
