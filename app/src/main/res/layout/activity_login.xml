@@ -45,20 +45,19 @@
         android:id="@+id/signupButton"
         android:layout_width="150dp"
         android:layout_height="55dp"
-        android:layout_above="@+id/checkBox"
         android:layout_toEndOf="@+id/loginButton"
         android:layout_toRightOf="@+id/loginButton"
         android:text="Sign up"
         android:onClick="signUp"
         android:textAllCaps="false" />
 
-    <CheckBox
+<!--    <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Remember login"
         android:id="@+id/checkBox"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/loginButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true" />-->
 
 </RelativeLayout>
